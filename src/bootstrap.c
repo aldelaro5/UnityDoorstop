@@ -233,7 +233,7 @@ void *init_mono(const char *root_domain_name, const char *runtime_version) {
 
         domain = mono.jit_init_version(root_domain_name, runtime_version);
 
-        if (config.mono_debug_enabled && !debugger_already_enabled) {
+        if (mono.debug_domain_create != NULL && config.mono_debug_enabled && !debugger_already_enabled) {
             mono.debug_domain_create(domain);
         }
     } else {
